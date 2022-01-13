@@ -22,9 +22,20 @@ function createTodo()
         //Then create an li and append it to the ul
         const listItems = document.createElement('li');
         ul.appendChild(listItems);
-        //listItems.innerText = 'HelloWorld';
         listItems.innerText = input.value;
-        input.value = '';
+        // let task = localStorage.setItem('task', input.value);
+        // localStorage.getItem(task);
+        // input.value = '';
+        // console.log(localStorage.getItem('task'))
+        LS();
     }
+}
+//LS Function
+(LS)=>
+{
+    let task = localStorage.setItem('task', input.value);
+    localStorage.getItem(task);
+    input.value = '';
+    console.log(localStorage.getItem('task'))
 }
 
