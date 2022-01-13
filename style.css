@@ -1,0 +1,28 @@
+.input-container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 30vw;
+    height: 20vh;
+    gap: 10px;
+}
+
+ul
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 5px;
+}
+ul li
+{
+   border-radius: 15px;
+   border: 1px solid black;
+    min-width: 20rem;
+    align-items: center;
+    display: flex;
+    padding: 10px;
+}
