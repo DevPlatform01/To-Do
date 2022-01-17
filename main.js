@@ -1,16 +1,22 @@
 const input = document.querySelector('.text');
 const btn = document.querySelector('.submit');
-const ul = document.querySelector('ul');
+let ul = document.querySelector('ul');
+
+
+
 //Event Listeners
 btn.addEventListener('click', createTodo);
 
+//Functions
+//creating a todo
 function createTodo()
 {
     if(input.value === "")
     {
         alert('Input cannot be empty.')
         return false;
-    } else
+    } 
+    else
     {
         //First Create a div to hold the list items. The div will have a class of ListContainer
         const listDiv = document.createElement('div');
@@ -23,19 +29,40 @@ function createTodo()
         const listItems = document.createElement('li');
         ul.appendChild(listItems);
         listItems.innerText = input.value;
-        // let task = localStorage.setItem('task', input.value);
-        // localStorage.getItem(task);
-        // input.value = '';
-        // console.log(localStorage.getItem('task'))
-        LS();
+        setLS();
+        input.value = '';
     }
 }
-//LS Function
-(LS)=>
+
+//setting tasks to local storage
+function setLS()
 {
-    let task = localStorage.setItem('task', input.value);
-    localStorage.getItem(task);
-    input.value = '';
-    console.log(localStorage.getItem('task'))
+  
+  //Create an Array of tasks and parse them as a string so tasks aren't getting replaced. 
+
+  //first check to see if there is an existing task in the local storage. If there is, getItem
+let tasks;
+  if(localStorage.getItem('tasks')=== null)
+ {
+    tasks = []; //If nothing exists, create an empty array. JSON is needed to parse an array
+ } else
+
+ {
+     tasks = JSON.parse(localStorage.getItem('tasks'));
+ }
+
+      tasks.push(input.value); //Add each value to the array
+
+    localStorage.setItem("tasks", JSON.stringify(tasks)); //converts the value to a string. 
+
+        tasks.forEach(function(task) //Loops through each list.
+    {
+       ul.innerHTML = tasks; 
+    });
+
 }
+
+
+
+
 
